@@ -1,6 +1,9 @@
 import 'package:catalogapp/utils/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'package:catalogapp/utils/networking.dart';
+
+var temp4 = "";
+var hum4 = "";
 
 class ResultShow4 extends StatefulWidget {
   const ResultShow4({Key? key}) : super(key: key);
@@ -11,6 +14,23 @@ class ResultShow4 extends StatefulWidget {
 
 class _ResultShow4State extends State<ResultShow4> {
   @override
+
+  void initState() {
+    getTempFromSheet();
+    super.initState();
+  }
+
+  getTempFromSheet() async {
+    NetworkHelper networkHelper =NetworkHelper('https://script.google.com/macros/s/AKfycbwY-PdAnA17-NiO6bPIG6YFlGRdzWAbQ_XcbKgHbsPAP-QSZYu_DI19Uc8UgqGMZvuCBA/exec');
+    var tempData = await networkHelper.getData();
+    updateUI(tempData);
+  }
+
+  void updateUI(dynamic tempData){
+    temp4 = tempData[0]['temperature'].toString();
+    hum4 = tempData[0]['humidity'].toString();
+    print(temp4);
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -45,8 +65,25 @@ class _ResultShow4State extends State<ResultShow4> {
             const SizedBox(
               height: 50,
             ),
-            SfRadialGauge(
-              title: const GaugeTitle(text: "Room Temperature"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  '$temp4 `C',
+                  style: const TextStyle(
+                    fontSize: 40,
+                  ),
+                ),
+                const SizedBox(
+                  width: 30,
+                ),
+                Text(
+                  hum4,
+                  style: const TextStyle(
+                    fontSize: 40,
+                  ),
+                ),
+              ],
             ),
             const SizedBox(
               height: 30,

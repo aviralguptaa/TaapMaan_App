@@ -1,10 +1,11 @@
+import 'dart:convert';
 import 'package:catalogapp/utils/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert' as convert;
+import 'package:catalogapp/utils/networking.dart';
 
-import '../temp_model.dart';
+var temp1 = "";
+var hum1 = "";
 
 class ResultShow1 extends StatefulWidget {
   const ResultShow1({Key? key}) : super(key: key);
@@ -14,36 +15,25 @@ class ResultShow1 extends StatefulWidget {
 }
 
 class _ResultShow1State extends State<ResultShow1> {
-  List<TempModel> temperatures = <TempModel>[];
-  getTempFromSheet() async {
-    var raw = await http.get(Uri.parse(
-        "https://script.google.com/macros/s/AKfycbxwBQmRPoX3noZ3j-I2-VpBJ1aQ1LxCcwRnGBMt1D-6P2MWZM6OikyqBW-wW_ZI2fw8mw/exec"));
-    var jsonTemp = convert.jsonDecode(raw.body);
-
-    print('this is json temp $jsonTemp');
-
-    jsonTemp.forEach((var element) {
-      print(element);
-      TempModel tempModel = new TempModel();
-      tempModel.temperature1 = element['temperature1'].toString();
-      tempModel.humidity1 = element['humidity1'].toString();
-      tempModel.temperature2 = element['temperature2'].toString();
-      tempModel.humidity2 = element['humidity2'].toString();
-      tempModel.temperature3 = element['temperature3'].toString();
-      tempModel.humidity3 = element['humidity3'].toString();
-      tempModel.temperature4 = element['temperature4'].toString();
-      tempModel.humidity4 = element['humidity4'].toString();
-
-      temperatures.add(tempModel);
-      // print("Length = ${temperatures.length}");
-    });
-  }
-
   @override
   void initState() {
     getTempFromSheet();
     super.initState();
   }
+
+
+  getTempFromSheet() async {
+    NetworkHelper networkHelper =NetworkHelper('https://script.googleusercontent.com/macros/echo?user_content_key=_uhxbiZKQVMMW133t0kWUYR0WJ1-053tYNJ4oXeptuRsCcBq-JE83v0Y0YnXtRf313hnQAEWHUTA9Au-dZKUNHhzSO5tHxrMm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnEMN-zh0MoXhD6QwzfnXLvmgn1ztwnXAuOud510C3ADO8hGrCJ5-ylW8yjlylX2zuecZD2Tj-nphSqr3Lna9kEF685rtVaJn39z9Jw9Md8uu&lib=M5V3tlZP-JrLBTkkZR0r6U5ftSUq-N7sx');
+    var tempData = await networkHelper.getData();
+    updateUI(tempData);
+  }
+
+  void updateUI(dynamic tempData){
+    temp1 = tempData[0]['temperature1'].toString();
+    hum1 = tempData[0]['humidity1'].toString();
+    print(temp1);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -56,10 +46,10 @@ class _ResultShow1State extends State<ResultShow1> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            // Image.asset(
-            //   "assets/images/result.png",
-            //   scale: .55,
-            // ),
+            Image.asset(
+              "assets/images/result.png",
+              scale: .55,
+            ),
             const SizedBox(
               height: 30,
             ),
@@ -80,20 +70,26 @@ class _ResultShow1State extends State<ResultShow1> {
             const SizedBox(
               height: 20,
             ),
-            // SfRadialGauge(
-            //   title: const GaugeTitle(text: "Room Temperature"),
-            // ),
-            Container(
-                child: Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TempTile(
-                  temperature1: temperatures[1].temperature1,
-                  humidity1: temperatures[1].humidity1,
-                )
+                Text(
+                  '$temp1 `C',
+                  style: const TextStyle(
+                    fontSize: 40,
+                  ),
+                ),
+                const SizedBox(
+                  width: 30,
+                ),
+                Text(
+                  hum1,
+                  style: const TextStyle(
+                    fontSize: 40,
+                  ),
+                ),
               ],
-            )),
-
+            ),
             const SizedBox(
               height: 30,
             ),
@@ -136,60 +132,59 @@ class _ResultShow1State extends State<ResultShow1> {
   }
 }
 
-class TempTile extends StatefulWidget {
-  String temperature1,
-      humidity1,
-      temperature2,
-      humidity2,
-      temperature3,
-      humidity3,
-      temperature4,
-      humidity4;
-
-  TempTile(
-      {
-        this.temperature1 = "",
-        this.humidity1 = "",
-        this.humidity2 = "",
-        this.temperature2 = "",
-        this.humidity3 = "",
-        this.temperature3 = "",
-        this.humidity4 = "",
-        this.temperature4 = ""});
-
-  @override
-  State<TempTile> createState() => _TempTileState();
-}
-
-class _TempTileState extends State<TempTile> {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(
-          widget.temperature1,
-          style: const TextStyle(
-            fontSize: 40,
-          ),
-        ),
-        const SizedBox(
-          width: 5,
-        ),
-        const Text(
-          '`C',
-          style: TextStyle(
-            fontSize: 30,
-          ),
-        ),
-        const SizedBox(width: 20),
-        Text(
-          widget.humidity1,
-          style: const TextStyle(
-            fontSize: 40,
-          ),
-        ),
-      ],
-    );
-  }
-}
+// class TempTile extends StatefulWidget {
+//   String temperature1,
+//       humidity1,
+//       temperature2,
+//       humidity2,
+//       temperature3,
+//       humidity3,
+//       temperature4,
+//       humidity4;
+//
+//   TempTile(
+//       {this.temperature1 = "",
+//       this.humidity1 = "",
+//       this.humidity2 = "",
+//       this.temperature2 = "",
+//       this.humidity3 = "",
+//       this.temperature3 = "",
+//       this.humidity4 = "",
+//       this.temperature4 = ""});
+//
+//   @override
+//   State<TempTile> createState() => _TempTileState();
+// }
+//
+// class _TempTileState extends State<TempTile> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       crossAxisAlignment: CrossAxisAlignment.center,
+//       children: [
+//         Text(
+//           widget.temperature1,
+//           style: const TextStyle(
+//             fontSize: 40,
+//           ),
+//         ),
+//         const SizedBox(
+//           width: 5,
+//         ),
+//         const Text(
+//           '`C',
+//           style: TextStyle(
+//             fontSize: 30,
+//           ),
+//         ),
+//         const SizedBox(width: 20),
+//         Text(
+//           widget.humidity1,
+//           style: const TextStyle(
+//             fontSize: 40,
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
