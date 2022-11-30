@@ -8,4 +8,5 @@ class MyRoutes{
   static String resultRoute4 = "/result4";
   static String changeRoute = "/change";
   static String adminLandRoute = "/adminLand";
+  static String landingRoute = "/landing";
 }

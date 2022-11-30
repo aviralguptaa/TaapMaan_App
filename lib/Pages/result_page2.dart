@@ -21,14 +21,14 @@ class _ResultShow2State extends State<ResultShow2> {
   }
 
   getTempFromSheet() async {
-    NetworkHelper networkHelper =NetworkHelper('https://script.google.com/macros/s/AKfycbwrRwgxQPgbwRz_Z_vphy-ScPL7iaNpbefJofXNaKtJFW49Li8_9SQGGFG24dJILrHmcQ/exec');
+    NetworkHelper networkHelper =NetworkHelper('https://script.google.com/macros/s/AKfycbzTmOUnvjgncCOeC9GUKUKTeEARIgUzQpGLKScPkHSITDHlCxs04wfyb8-TE8-8yGxj/exec');
     var tempData = await networkHelper.getData();
     updateUI(tempData);
   }
 
   void updateUI(dynamic tempData){
-    temp2 = tempData[0]['temperature'].toString();
-    hum2 = tempData[0]['humidity'].toString();
+    temp2 = tempData[0]['Ftemp'].toString();
+    hum2 = tempData[0]['Fhum'].toString();
     print(temp2);
   }
 
@@ -109,7 +109,7 @@ class _ResultShow2State extends State<ResultShow2> {
             ElevatedButton(
               onPressed: () {
                 // Navigator.pushNamed(context, MyRoutes.changeRoute);
-                Navigator.pushNamed(context, MyRoutes.adminLandRoute);
+                Navigator.pushNamed(context, MyRoutes.changeRoute);
               },
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(220, 45),

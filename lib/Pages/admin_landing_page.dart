@@ -1,3 +1,4 @@
+import 'package:catalogapp/utils/routes.dart';
 import 'package:flutter/material.dart';
 
 class AdminLanding extends StatelessWidget {
@@ -7,7 +8,7 @@ class AdminLanding extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Admin Panel"),
+        title: const Text("Admin Panel"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -17,15 +18,15 @@ class AdminLanding extends StatelessWidget {
               height: 20,
             ),
             Image.asset(
-              "assets/images/admin2.png",
+              "assets/images/administrator.png",
               scale: .2,
             ),
-            SizedBox(
+            const SizedBox(
               height: 70,
             ),
             ElevatedButton(
               onPressed: () {
-
+                Navigator.pushNamed(context,MyRoutes.enterRoute);
               },
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(220, 45),

@@ -23,14 +23,14 @@ class _ResultShow1State extends State<ResultShow1> {
 
 
   getTempFromSheet() async {
-    NetworkHelper networkHelper =NetworkHelper('https://script.googleusercontent.com/macros/echo?user_content_key=_uhxbiZKQVMMW133t0kWUYR0WJ1-053tYNJ4oXeptuRsCcBq-JE83v0Y0YnXtRf313hnQAEWHUTA9Au-dZKUNHhzSO5tHxrMm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnEMN-zh0MoXhD6QwzfnXLvmgn1ztwnXAuOud510C3ADO8hGrCJ5-ylW8yjlylX2zuecZD2Tj-nphSqr3Lna9kEF685rtVaJn39z9Jw9Md8uu&lib=M5V3tlZP-JrLBTkkZR0r6U5ftSUq-N7sx');
+    NetworkHelper networkHelper =NetworkHelper('https://script.google.com/macros/s/AKfycbyIy64fwmQbjtjb34CmIDdHyhZw-_jB60aPqdiZAq4g1bkje7oOfovZSDp81PRlHBU7/exec');
     var tempData = await networkHelper.getData();
     updateUI(tempData);
   }
 
   void updateUI(dynamic tempData){
-    temp1 = tempData[0]['temperature1'].toString();
-    hum1 = tempData[0]['humidity1'].toString();
+    temp1 = tempData[0]['Ftemp'].toString();
+    hum1 = tempData[0]['Fhum'].toString();
     print(temp1);
   }
 
@@ -46,10 +46,10 @@ class _ResultShow1State extends State<ResultShow1> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Image.asset(
-              "assets/images/result.png",
-              scale: .55,
-            ),
+            // Image.asset(
+            //   "assets/images/result.png",
+            //   scale: .55,
+            // ),
             const SizedBox(
               height: 30,
             ),
@@ -113,7 +113,7 @@ class _ResultShow1State extends State<ResultShow1> {
             ElevatedButton(
               onPressed: () {
                 // Navigator.pushNamed(context, MyRoutes.changeRoute);
-                Navigator.pushNamed(context, MyRoutes.adminLandRoute);
+                Navigator.pushNamed(context, MyRoutes.changeRoute);
               },
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(220, 45),

@@ -50,14 +50,24 @@ class UserEnter extends StatelessWidget {
               //   ),
               // ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 10),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    SizedBox(width: 5,),
                     ElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(context, MyRoutes.resultRoute1);
                       },
-                      child: const Text("Room 1"),
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                        child: Text(
+                          "LT6",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
                     ),
                     const SizedBox(
                       width: 8,
@@ -66,7 +76,14 @@ class UserEnter extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(context, MyRoutes.resultRoute2);
                       },
-                      child: const Text("Room 2"),
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                        child: Text(
+                          "LT5",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
                     ),
                     const SizedBox(
                       width: 8,
@@ -75,28 +92,21 @@ class UserEnter extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(context, MyRoutes.resultRoute3);
                       },
-                      child: const Text("Room 3"),
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                        child: Text(
+                          "MPH",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
                     ),
                     const SizedBox(
                       width: 8,
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, MyRoutes.resultRoute4);
-                      },
-                      child: const Text("Room 4"),
-                    ),
                   ],
                 ),
               ),
-              // ElevatedButton(
-              //   onPressed: () {
-              //   Navigator.pushNamed(context, MyRoutes.resultRoute);
-              //   },
-              //   child: const Text("Check",style: TextStyle(
-              //     fontSize: 15,
-              //   ),),
-              // ),
             ],
           ),
         ),

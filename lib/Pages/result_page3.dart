@@ -108,7 +108,7 @@ class _ResultShow3State extends State<ResultShow3> {
             ElevatedButton(
               onPressed: () {
                 // Navigator.pushNamed(context, MyRoutes.changeRoute);
-                Navigator.pushNamed(context, MyRoutes.adminLandRoute);
+                Navigator.pushNamed(context, MyRoutes.changeRoute);
               },
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(220, 45),

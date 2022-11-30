@@ -14,9 +14,11 @@ class ChangeTemp extends StatelessWidget {
         child: Column(
           children: [
             Image.asset(
-              "assets/images/result.png",
+              "assets/images/hello.jpg",
               scale: .5,
-            ),
+          ),
+            const SizedBox(height: 70,),
+            const Text('Here to help !',style: TextStyle(fontSize: 30),),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 50, horizontal: 50),
               child: TextField(
