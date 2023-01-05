@@ -12,7 +12,7 @@ The project will be using the temperature monitoring sensors that are installed 
 The data from the temperature sensors are collected in a google sheet from where using the Google Sheets API we will parse the data to our **FLUTTER** app.
 
 ## Hardware Used
- 1.Node MCU
+ 1.Node MCU_ESP8266<br>
  2.DHT11
  
 ## Wireframes
