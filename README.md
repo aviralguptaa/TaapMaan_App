@@ -9,10 +9,11 @@ We have built a fully-fledged Temperature Monitoring **Flutter** Mobile applicat
 ## Our Approach
 
 The project will be using the temperature monitoring sensors that are installed in every classroom of JIIT 128.The data from the sensors will be collected and passed on to the mobile application to display the temperatures in each room at a single place.<br>
+</br>
 The data from the temperature sensors are collected in a google sheet from where using the Google Sheets API we will parse the data to our **FLUTTER** app.
 
 ## Hardware Used
- 1.Node MCU_ESP8266<br>
+ 1.Node MCU_ESP8266 </br>
  2.DHT11
  
 ## Wireframes
