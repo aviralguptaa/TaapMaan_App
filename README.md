@@ -6,19 +6,19 @@ We have built a fully-fledged Temperature Monitoring **Flutter** Mobile applicat
 <br>
 
 
-### Our Approach
+## Our Approach
 
 The project will be using the temperature monitoring sensors that are installed in every classroom of JIIT 128.The data from the sensors will be collected and passed on to the mobile application to display the temperatures in each room at a single place.<br>
 The data from the temperature sensors are collected in a google sheet from where using the Google Sheets API we will parse the data to our **FLUTTER** app.
 
-### Hardware Used
+## Hardware Used
  1.Node MCU
  2.DHT11
  
-### Wireframes
+## Wireframes
 ![image](https://user-images.githubusercontent.com/71933640/210734955-012fb45a-5cba-4473-801c-000abac1962c.png)
 
-### App Images
+## App Images
 ![image](https://user-images.githubusercontent.com/71933640/210735068-3ad6dee1-76f3-484f-a1e6-37faea143ef1.png)<br>
 <br>
 ![image](https://user-images.githubusercontent.com/71933640/210735086-4c8cccad-b00d-4aa4-a7a1-b243ab846bce.png)<br>
@@ -34,7 +34,7 @@ The data from the temperature sensors are collected in a google sheet from where
 ![image](https://user-images.githubusercontent.com/71933640/210735193-93356101-5249-43d3-8f9d-6f929bc41c02.png)<br>
 
 
-### Future Scope
+## Future Scope
 Future work would be focused more on increasing sensors on this system to fetch more data from even greater number of rooms and floors and incorporating better and expensive sensors with higher accuracy and maximizing responsiveness.
 
 
