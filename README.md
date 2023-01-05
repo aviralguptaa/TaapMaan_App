@@ -20,11 +20,17 @@ The data from the temperature sensors are collected in a google sheet from where
 
 ### App Images
 ![image](https://user-images.githubusercontent.com/71933640/210735068-3ad6dee1-76f3-484f-a1e6-37faea143ef1.png)<br>
+<br>
 ![image](https://user-images.githubusercontent.com/71933640/210735086-4c8cccad-b00d-4aa4-a7a1-b243ab846bce.png)<br>
+<br>
 ![image](https://user-images.githubusercontent.com/71933640/210735114-f86b84b6-f5cf-4fe7-84bf-9a0cc1022ebb.png)<br>
+<br>
 ![image](https://user-images.githubusercontent.com/71933640/210735132-818e0c32-02c9-4b64-aae9-5318515b391a.png)<br>
+<br>
 ![image](https://user-images.githubusercontent.com/71933640/210735145-9ef1ba8c-c429-439d-baf0-1da613288d4b.png)<br>
+<br>
 ![image](https://user-images.githubusercontent.com/71933640/210735177-a62f5e0d-af96-4118-a49e-92c42b8e2755.png)<br>
+<br>
 ![image](https://user-images.githubusercontent.com/71933640/210735193-93356101-5249-43d3-8f9d-6f929bc41c02.png)<br>
 
 
